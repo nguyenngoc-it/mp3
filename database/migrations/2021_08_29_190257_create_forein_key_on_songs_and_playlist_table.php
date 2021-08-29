@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCommentsTable extends Migration
+class CreateForeinKeyOnSongsAndPlaylistTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class CreateCommentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('comments', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->bigInteger('music_id');
-            $table->bigInteger('user_id')->unsigned();
-            $table->text('content');
-            $table->timestamps();
+        Schema::table('playLists_songs', function (Blueprint $table) {
+            $table->foreign('song_id')->references('song_id')->on('songs');
         });
     }
 
@@ -29,6 +25,8 @@ class CreateCommentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('comments');
+        Schema::table('playLists_songs', function (Blueprint $table) {
+            //
+        });
     }
 }

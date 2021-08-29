@@ -23,9 +23,9 @@ class CreateUsersTable extends Migration
             $table->string('address');
             $table->string('avatar')->nullable();
             $table->string('hobby')->nullable();
-            $table->integer('role_id')->nullable();
+            $table->bigInteger('role_id')->nullable()->unsigned();
             $table->integer('phone')->nullable();
-            $table->integer('song_id')->nullable();
+            $table->bigInteger('song_id')->nullable()->unsigned();
             $table->rememberToken();
             $table->timestamps();
         });

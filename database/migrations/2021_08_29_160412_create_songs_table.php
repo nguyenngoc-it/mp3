@@ -16,7 +16,7 @@ class CreateSongsTable extends Migration
         Schema::create('songs', function (Blueprint $table) {
             $table->bigIncrements('song_id');
             $table->string('song_name');
-            $table->bigInteger('category_id');
+            $table->bigInteger('category_id')->unsigned();
             $table->string('lyric')->nullable();
             $table->string('song_image');
             $table->bigInteger('view_count')->default(0);
